@@ -1,3 +1,5 @@
+// Proefneming met React en Bootstrap (20200623)
+
 import Link from 'next/link'
 
 // De Bootstrap-componenten

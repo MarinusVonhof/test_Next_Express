@@ -1,3 +1,5 @@
+// Proefneming met Next.js en Express (20200623)
+
 const fs = require('fs');
 const express = require('express')
 const next = require('next')
