@@ -1,0 +1,202 @@
+// Custom.scss
+
+/*@font-face {
+    src: url("./scss/exljbris - MuseoSans-100.otf") format("opentype"); // thin
+    font-family: MuseoSans;
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-300.otf") format("opentype"); // extra light
+    font-family: MuseoSans;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-500.otf") format("opentype"); // medium
+    font-family: MuseoSans;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-700.otf") format("opentype"); // bold
+    font-family: MuseoSans;
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-900.otf") format("opentype"); // black (heavy)
+    font-family: MuseoSans;
+    font-style: normal;
+    font-weight: 900;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-100Italic.otf") format("opentype");
+    font-family: MuseoSans;
+    font-style: italic;
+    font-weight: 100;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-300Italic.otf") format("opentype");
+    font-family: MuseoSans;
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-500Italic.otf") format("opentype");
+    font-family: MuseoSans;
+    font-style: italic;
+    font-weight: 500;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-700Italic.otf") format("opentype");
+    font-family: MuseoSans;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    src: url("./scss/exljbris - MuseoSans-900Italic.otf") format("opentype");
+    font-family: MuseoSans;
+    font-style: italic;
+    font-weight: 900;
+}
+*/
+
+$font-crow: sans-serif, Arial;
+//$font-crow: MuseoSans, courier; // debug
+
+// Bootstrap variabele instellen op CROW
+//$font-family-base: $font-crow;
+
+// Option A: Include all of Bootstrap (de defaults)
+@import "~bootstrap/scss/bootstrap";
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .1 /* .4 */
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .1 /* .4 */
+    }
+    to {
+        opacity: 1
+    }
+}
+
+a.inherit {
+    color: inherit;
+    /*text-decoration: underline;*/
+    font-style: italic;
+}
+
+a.inherit:hover {
+    color: initial;
+    /*text-decoration: initial;*/
+}
+
+a.content {
+    outline: none;
+    color: black;
+    text-decoration: none;
+}
+a.content:hover {
+    color: #35BDF5; /*lichtblauw*/
+    text-decoration: none;
+}
+
+a.doc {
+     /* font-weight: bold;arial; */
+    color: white;
+}
+a.doc:hover {
+    color: initial;
+}
+
+u /* gebruik u-tag in HTML5 definitie: tekst met afwijkende stijl, onderdruk underline*/ {
+    /*text-decoration: underline;*/
+    text-decoration: none;
+}
+
+.bc_crow {
+    background-color: #009FDE; /* crow blauw */
+}
+
+.bc_grijs {
+    background-color: #EFEFEF;
+}
+
+.bc_wit {
+    background-color: #FAFAFA;
+}
+
+footer {
+    float: right; /* left veroorzaakt horizontale scroll */
+    clear: both;
+    width: 100%;
+    font-size: 75%; /*arial, sans-serif;*/
+    color: black;
+    padding: 10px;
+    text-align: center;
+    /*background-color: #009FDE;  CROW blauw */
+    background-color: #CFCECC; /* CROW lichtgrijs */
+}
+
+#aniBusy {
+    position: relative;
+    /*margin-top: 0px;
+    width: 5px;
+    height: 25px;*/
+    margin-top: 3px;
+    width: 25px;
+    height: 5px;
+    background: red;
+    animation: aniBusy_move 2s infinite;
+}
+
+@keyframes aniBusy_move {
+    /*0% {top: 0px; left: 0px; background: red;}
+	65% {top: 0px; left: 20px; background: #1F9FC6;}
+	80% {top: 0px; left: 20px; background: none;}
+	100% {top: 0px; left: 20px; background: none;}*/
+    0% {
+        top: 0px;
+        left: 0px;
+        background: red;
+    }
+    50% {
+        top: 0px;
+        left: 60px;
+        background: #1F9FC6;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        background: red;
+    }
+}
+
+table.report {
+    table-layout: fixed; /* anders wordt de parent-breedte over-ruled */
+}
+/*table.report tr {
+    overflow-y: scroll; 
+}*/
+table.report th, table.report td {
+    overflow: hidden;
+}

@@ -1,0 +1,66 @@
+
+<head>
+    <meta content="text/html;charset=UTF-8" />
+
+    <title>Test traditional</title>
+    <link id="icon" rel="shortcut icon" href="../htdocs/CROW_LogoSmall.ico.gif" type="image/gif" /> <!-- img-naam case sensitive ? -->
+
+    <link rel="stylesheet" href="../htdocs/bootstrap_ldp.css" /> <!--...-->
+</head>
+
+<body>
+
+    <div class="container-fluid bc_crow">
+        <div class="row">
+            <div class="col-lg-9 col-12 mx-auto">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+
+                    <a class="navbar-brand" href="/">
+                        <h3>Home</h3>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse ml-5" id="navbarNav">
+                        <div class="navbar-nav mr-auto">
+                            <a class="nav-item nav-link active" id="hrefCrow" href="#">Interface op LDP</a>
+                        </div>
+
+                        <div class="btn-group">
+                            <!--
+                                <button type="button" class="btn btn-outline-light text-left" id="loginTitel">Inloggen</button>
+                                <button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                            -->
+                            <button class="btn btn-outline-light dropdown-toggle text-left" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="loginTitel" style="padding-right: 1em">Inloggen</span></button>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLogin" style="font-size:1em">
+                                <span class="dropdown-item-text" id="loginText" style="color:gray">Aanmelden op omgeving:</span>
+
+                                <a class="dropdown-item" id="loginProductie" href="#" onclick="gotoHref('/ldp/login?env=productie');">Productie</a>
+                                <a class="dropdown-item" id="loginAcceptatie" href="#" onclick="gotoHref('/ldp/login?env=acceptatie');">Acceptatie</a>
+                                <!--button class="dropdown-item" id="logout" type="button" onclick="logout()" hidden>Log uit</button-->
+                                <a class="dropdown-item" id="logout" href="#" onclick="logout();" hidden>Log uit</a>
+                            </div>
+                        </div>
+                        <span class="text-light ml-3" id="loginResult" ></span>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <br /><br /><img src="./htdocs/marIvon_logo_klein_zonder bijschrift.png" style="height: 1.2rem" alt="">&nbsp;&nbsp;&nbsp;20 mei 2020
+    </footer>
+
+    <!-- bootstrap scripts -->
+    <script src="./htdocs/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- let op: de bootstrap.bundle.min.js heeft syntax fout -->
+    <script src="./htdocs/bootstrap.bundle.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
