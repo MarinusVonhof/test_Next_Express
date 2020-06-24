@@ -71,11 +71,11 @@
 }
 */
 
-$font-crow: sans-serif, Arial;
-//$font-crow: MuseoSans, courier; // debug
+$font-test: sans-serif, Arial;
+//$font-test: MuseoSans, courier; // debug
 
-// Bootstrap variabele instellen op CROW
-//$font-family-base: $font-crow;
+// Bootstrap variabele instellen op Test
+//$font-family-base: $font-test;
 
 // Option A: Include all of Bootstrap (de defaults)
 @import "~bootstrap/scss/bootstrap";
@@ -133,10 +133,6 @@ u /* gebruik u-tag in HTML5 definitie: tekst met afwijkende stijl, onderdruk und
     text-decoration: none;
 }
 
-.bc_crow {
-    background-color: #009FDE; /* crow blauw */
-}
-
 .bc_grijs {
     background-color: #EFEFEF;
 }
@@ -153,8 +149,7 @@ footer {
     color: black;
     padding: 10px;
     text-align: center;
-    /*background-color: #009FDE;  CROW blauw */
-    background-color: #CFCECC; /* CROW lichtgrijs */
+    background-color: #CFCECC; 
 }
 
 #aniBusy {
