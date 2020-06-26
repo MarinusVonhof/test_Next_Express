@@ -1,7 +1,6 @@
 // Proefneming met React en Bootstrap (20200623)
 
 import Link from 'next/link'
-import Head from 'next/head'
 //import { StaticProps } from '../lib/api' // Lees de static data (pre-rendered)
 import fs from 'fs'
 
@@ -207,19 +206,6 @@ export default function Index({props}) {
 
    return (
      <div>
-        <Head>
-         <title>Test PWA</title>
-
-        <meta name="description" content="Test met Next, Express, React en Bootstrap" />
-        <meta name="keywords" content="marIvon, test" />
-        <meta name="author" content="marIvon" />
-        <meta content="text/html;charset=UTF-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
-        <link rel="manifest" href="manifest.json" />
-        <link href='favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />
-        <link href='favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' />
-        </Head>
       <div className="container mx-auto">
       {/* <Container fluid> Het bootstrap-component */}
 
