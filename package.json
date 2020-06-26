@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start with express": "cross-env NODE_ENV=production node server.js",
+    "start": "next start"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
