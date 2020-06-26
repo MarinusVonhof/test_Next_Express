@@ -216,9 +216,9 @@ export default function Index({props}) {
         <meta content="text/html;charset=UTF-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-        <link rel="manifest" href="/manifest.json" />
-        <link href='/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />
-        <link href='/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' />
+        <link rel="manifest" href="manifest.json" />
+        <link href='favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />
+        <link href='favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' />
         </Head>
       <div className="container mx-auto">
       {/* <Container fluid> Het bootstrap-component */}
