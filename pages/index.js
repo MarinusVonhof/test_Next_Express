@@ -1,9 +1,12 @@
 // Proefneming met React en Bootstrap (20200623)
 
 import Link from 'next/link'
+import Head from 'next/head'
+//import { StaticProps } from '../lib/api' // Lees de static data (pre-rendered)
+import fs from 'fs'
 
 // De Bootstrap-componenten
-// Niet in gebruik, via bootstrap-styles
+// Niet in gebruik, doe het via bootstrap-styles
 // Mogelijk wel nodig bij jQuery-afhankelijke componenten
 //import Container from 'react-bootstrap/Container'
 //import Card from 'react-bootstrap/Card'
@@ -20,47 +23,14 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.init();
-  }
-  init () {
+  /*init () {
     this.hasWinner = null;
 
     this.state = {
       squares: Array(9).fill(null),
       xIsNext: true,
     };
-  }
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-
-    if (this.hasWinner) {
-      this.init();
-      this.setState(this.state); // setSTate forceert rendering
-      return;
-    }
-    let end = true;
-    for (let n = 0; n < 9; n++) {
-      if (!squares[n]) {
-        end = false; break;
-      }
-    }
-    if (end) {
-      this.init();
-      this.setState(this.state); // setSTate forceert rendering
-      return;
-    }
-    else if (squares[i])
-      return;
-
-    squares[i] = this.state.xIsNext ? 'X': 'O';
-
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
-  }
+  }*/
   renderSquare(i) {
     return (
 
@@ -68,27 +38,16 @@ class Board extends React.Component {
     //<Square value={this.state.squares[i]} 
     //onClick={() => this.handleClick(i)} />
 
-      <button className="square" onClick={() => {this.handleClick(i)} }>
-      {this.state.squares[i]}
+      <button className="square" onClick={() => {this.props.onClick(i)} }>
+      {this.props.squares[i]}
       </button>
     );
   }
   render() {
 
-    this.hasWinner = calculateWinner(this.state.squares);
-    let title;
-
-    if (this.hasWinner) {
-      let status = 'Winner: ' + this.hasWinner;
-      title =  (<b>{status}</b>); // jsx-code - afwijkende stijl voor winnaar 
-    } 
-    else {
-      let status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-      title = (<div>{status}</div>);
-    }
     return (
       <div>
-        <div className="status">{title}</div>
+        {/*<div className="status">{title}</div>*/}
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -130,15 +89,99 @@ function calculateWinner(squares) {
 }
 
 class Game extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      stepNumber: 0,
+      xIsNext: true,
+    };
+  }
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) === 0,
+    });
+  }
+  handleClick(i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
+
+    /*if (this.hasWinner) {
+      this.init();
+      this.setState(this.state); // setSTate forceert rendering
+      return;
+    }
+    let end = true;
+    for (let n = 0; n < 9; n++) {
+      if (!squares[n]) {
+        end = false; break;
+      }
+    }
+    if (end) {
+      this.init();
+      this.setState(this.state); // setSTate forceert rendering
+      return;
+    }
+    else if (squares[i])
+      return;*/
+
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+    this.setState({
+      history: history.concat([{
+        squares: squares,
+      }]),
+      stepNumber: history.length,
+      xIsNext: !this.state.xIsNext,
+    });
+  }
   render() {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+
+      if (move < this.state.stepNumber) {
+      const desc = move ?
+        'Go to move #' + move :
+        'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );}
+
+    });
+
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      //status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? this.props.players[0] : this.props.players[1]);
+    }
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{status}</div>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
@@ -160,15 +203,30 @@ ReactDOM.render(
   document.getElementById('root')
 ); */
 
-export default function Home() {
-  return (
-      <div className="container mx-auto">
-      {/* <Container fluid> De bootstrap-component */}
+export default function Index({props}) {
 
-      {/* <Card className="ml-4"> De bootstrap-component */}
+   return (
+     <div>
+        <Head>
+         <title>Test PWA</title>
+
+        <meta name="description" content="Test met Next, Express, React en Bootstrap" />
+        <meta name="keywords" content="marIvon, test" />
+        <meta name="author" content="marIvon" />
+        <meta content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <link rel="manifest" href="/manifest.json" />
+        <link href='/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />
+        <link href='/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' />
+        </Head>
+      <div className="container mx-auto">
+      {/* <Container fluid> Het bootstrap-component */}
+
+      {/* <Card className="ml-4"> Het bootstrap-component */}
    
       <div className="card mt-5">
-        {/* De bootstrap-component of gebruik de styles
+        {/* Het bootstrap-component of gebruik de styles
         <Card.Header className="py-5">
           <h6>Test Next + React + Express + Bootstrap</h6>
         </Card.Header> 
@@ -177,11 +235,11 @@ export default function Home() {
           <h6>Test Next + React + Express + Bootstrap</h6>
         </div>
 
-      {/* <Card.Body> De bootstrap-component */}
+      {/* <Card.Body> Het bootstrap-component */}
         <div className="card card-body"> {/* gebruik de styles */}
            <div className="mx-auto">
 
-          <Game />
+          <Game players={props.players} />
 
           </div>
         </div>
@@ -200,6 +258,25 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </div>
   //document.getElementById('root')
   )
+}
+
+
+export async function getStaticProps() { 
+  
+  // Proef met lezen static data uit server-bestand (20200625)
+
+  // Next-Docs:
+  // This function gets called at build time on server-side.
+  // It won't be called on client-side, so you can even do
+  // direct database queries. See the "Technical details" section.
+
+  const map = process.cwd();
+  let props = JSON.parse(fs.readFileSync(map + "/StaticProps.json").toString("utf8")); // module fs kun je alleen gebruiken binnen getStaticProps
+
+  return {
+    props: { props },
+  }
 }

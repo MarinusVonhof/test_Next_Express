@@ -1,6 +1,6 @@
 // Proefneming met Next.js en Express (20200623)
 
-const fs = require('fs');
+import fs from 'fs';
 const express = require('express')
 const next = require('next')
 
