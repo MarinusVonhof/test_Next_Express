@@ -1,8 +1,8 @@
 // next-pwa initialiseert de PWA-configs (service-worker, ...)
 
-const next_pwa = require('next-pwa')
+const withPwa = require('next-pwa')
 
-module.exports = next_pwa({
+module.exports = withPwa({
 
     pwa: {
         dest: 'public'
