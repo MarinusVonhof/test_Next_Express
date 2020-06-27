@@ -9,7 +9,7 @@ export default class extends Document {
     }
     render() {
         return (
-            <html lang='en' dir='ltr'>
+            <html lang='nl' dir='ltr'>
                 <Head>
                     <meta charset="utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
