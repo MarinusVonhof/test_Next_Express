@@ -14,8 +14,9 @@ import fs from 'fs'
 //import './index.css';
 
 function Square(props) {
+     
     return (
-      <button className="square" onClick={() => {props.onClick()} }>
+      <button className="square" onClick={() => {props.onClick()}} area-label={props.name}>
         {props.value}
       </button>
     );
@@ -31,15 +32,19 @@ class Board extends React.Component {
     };
   }*/
   renderSquare(i) {
+
+    let name= "b" + i; // Proefneming met PWA - validatie (button heef naam nodig)
+                       // Gebruik tab Lighthouse in Chrome-development
+
     return (
 
     // Gebruik de functie:
-    //<Square value={this.state.squares[i]} 
-    //onClick={() => this.handleClick(i)} />
+    <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} name={name} />
 
-      <button className="square" onClick={() => {this.props.onClick(i)} }>
-      {this.props.squares[i]}
-      </button>
+    // Zonder functie
+    //<button className="square" onClick={() => {this.props.onClick(i)} }>
+    //  {this.props.squares[i]}
+    //  </button>
     );
   }
   render() {
@@ -152,6 +157,7 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
 
       if (move < this.state.stepNumber) {
+
       const desc = move ?
         'Go to move #' + move :
         'Go to game start';
