@@ -1,3 +1,8 @@
+# Testing combination Express, Next.js, React.js, Bootstrap, PWA-deployment
+
+(20200628)
+With thanks, based on: 
+
 # Custom Express Server example
 
 Most of the times the default Next server will be enough but sometimes you want to run your own server to customize routes or other kind of the app behavior. Next provides a [Custom server and routing](https://github.com/vercel/next.js#custom-server-and-routing) so you can customize as much as you want.
